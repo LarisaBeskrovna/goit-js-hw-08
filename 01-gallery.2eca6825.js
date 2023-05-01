@@ -1,2 +1,0 @@
-!function(){document.querySelector(".gallery").insertAdjacentHTML("beforeend",galleryItems.map((function(e){var l=e.original,a=e.preview,n=e.description;return'<li class="gallery__item"> \n     <a class="gallery__link" href='.concat(l,'>\n     <img class="gallery__image" \n     src=').concat(a,' \n     alt="').concat(n,'"></img> </a> </li>')})).join(""));new SimpleLightbox(".gallery__link",{captionsData:"alt",captionDelay:250});console.log(galleryItems)}();
-//# sourceMappingURL=01-gallery.2eca6825.js.map
