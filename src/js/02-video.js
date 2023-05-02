@@ -14,14 +14,29 @@ player.on('timeupdate', function () {
             duration: 61.857
             percent: 0.049
             seconds: 3.034
-        }}); 
-        console.log(KEY_PLAUER);
-        const restoreCurrentTime = () => {
-        const currentTime = localStorage.getItem(KEY_PLAUER);
-          if (currentTime) {
-            player.setCurrentTime(currentTime)
+        }
+      console.log(KEY_PLAUER)}); 
+      
+        function pausedPlay() {
+          if (JSON.parse(localStorage.getItem(KEY_PLAUER)) === null) {
+            return;
+          }
+          const paused = JSON.parse(localStorage.getItem(KEY_PLAUER))["seconds"];
+          if (paused) {
+            player
+              .setCurrentTime(paused)
+              .then(function (seconds) {})
+              .catch(function (error) {
+                switch (error.name) {
+                  case "Error":
+                    break;
+                  default:
+                    break;
+                }
+              });
           }
         }
-        restoreCurrentTime()
+        pausedPlay();
+
 
 
