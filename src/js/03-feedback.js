@@ -9,15 +9,23 @@ input: document.querySelector("input"),
 };
 
 refs.form.addEventListener('input', throttle(onTextareaImput, 500));
-refs.form.addEventListener('submit', e => {
- e.preventDefault();
- e.currentTarget.reset();
- const objData = JSON.parse(localStorage.getItem(STORAGE_KEY));
- localStorage.removeItem(STORAGE_KEY);
-  });
+refs.form.addEventListener('submit', onFormSubmit);
+
+function onFormSubmit(evt) {
+  evt.preventDefault();
+  if (refs.input.value.trim() === '' || refs.textarea.value.trim() === '') {
+  alert('Заповніть всі поля форми!');
+  return;
+  }
+  evt.currentTarget.reset();
+  console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
+  localStorage.removeItem(STORAGE_KEY);
+  }
   
 
 populateTextarea();
+
+
 
 function onTextareaImput(evt) {
 formData[evt.target.name] = evt.target.value;
